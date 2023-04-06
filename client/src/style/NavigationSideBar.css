@@ -1,0 +1,15 @@
+.main--container{
+    border: 1px solid green;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.navigation--panel{
+    border: 1px solid orange;
+    flex: 1;
+}
+
+.content--view {
+    flex: 4;
+}
