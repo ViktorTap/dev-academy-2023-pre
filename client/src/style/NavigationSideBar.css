@@ -1,15 +1,30 @@
-.main--container{
-    border: 1px solid green;
+.navigation-side-bar--main-container{
     height: 100%;
     width: 100%;
     display: flex;
+    
+    
 }
 
-.navigation--panel{
-    border: 1px solid orange;
+.navigation-side-bar--navigation-panel{
+    background-color: #e4e4e4;
+    border-radius: 35px 0px 0 35px;
+    border-right: 1px solid black;
+    
+    /* box-shadow: 1px 0 1px 0; */
     flex: 1;
+    
 }
 
-.content--view {
+.navigation-side-bar--content-view {
     flex: 4;
+}
+
+.navigation-side-bar--link{
+    background-color: aqua;
+    padding: 5px;
+}
+
+#link {
+    text-decoration: none;
 }

@@ -1,7 +1,15 @@
 import express from "express";
 import { pool } from "./db.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", process.env.ORIGIN);
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 app.get("/journeys", async (req, res) => {
 
@@ -58,6 +66,7 @@ app.get("/stations", async (req, res) => {
         console.log(error)
     }
 })
+
 
 
 

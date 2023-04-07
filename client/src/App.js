@@ -1,8 +1,8 @@
 import './style/App.css';
 import { Routes, Route } from 'react-router-dom';
 
-import MainView from './components/MainView';
-import SecondView from './components/SecondView';
+import JourneyView from './components/JourneyView';
+import StationView from './components/StationView';
 import NavigationSideBar from './components/NavigationSideBar';
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<NavigationSideBar />}>
 
-          <Route index element={<MainView />} />
-          <Route path="second" element={<SecondView />} />  
+          <Route index element={<JourneyView />} />
+          <Route path="stations" element={<StationView />} />  
 
         </Route>
       </Routes> 
