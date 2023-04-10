@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const baseURL = "http://localhost:8080/journeys"
+const baseURL = "http://localhost:8080/stations"
 
-export async function getJourneys(page, month){
+export async function getStations(page, month){
 
     if(!month) {
         console.log("Please, enter the month");

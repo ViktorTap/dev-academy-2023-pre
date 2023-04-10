@@ -1,28 +1,28 @@
-.journey-view--main-container {
+.station-view--main-container {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.journey-view--title-container {
+.station-view--title-container {
     display: flex;
     justify-content: space-around;
     border: 1px solid red;
 }
 
-.journey-view--title-container > h3 {
+.station-view--title-container > h3 {
     flex: 1;
 }
 
-.journey-view--journey-list-container {
+.station-view--station-list-container {
     overflow: scroll;
 }
 
-.journey-view--pagination-footer {
+.station-view--pagination-footer {
     display: flex;
     justify-content: space-around;
 }
 
-.journey-view--pagination-footer-elements {
-    flex: 1;
+.station-view--pagination-footer-elements {
+    flex:1
 }

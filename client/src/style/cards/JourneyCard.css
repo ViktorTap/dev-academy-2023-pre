@@ -1,0 +1,9 @@
+.journey-card--main-container {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid gray;
+}
+
+.journey-card--main-container > h3 {
+    flex: 1;
+}

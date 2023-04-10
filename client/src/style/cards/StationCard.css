@@ -1,0 +1,9 @@
+.station-card--main-container {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid gray;
+}
+
+.station-card--main-container > h3 {
+    flex: 1;
+}
