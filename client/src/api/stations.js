@@ -24,3 +24,26 @@ export async function getStations(page, month){
         console.log(error);
     }
 }
+
+export async function getStationsByName(page, month){
+
+    if(!month) {
+        console.log("Please, enter the month");
+        return "Please, enter the month";
+    }
+
+    try {
+        const response = await axios.get(`${baseURL}/order/name`, {
+            params: {
+                page: page,
+                limit: 50,
+                month: month
+            }
+        })
+
+        return response.data;
+
+    } catch (error) {
+        console.log(error);
+    }
+}

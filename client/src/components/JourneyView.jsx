@@ -38,6 +38,13 @@ function JourneyView() {
         <h3>Duration (min)</h3>
       </section>
 
+      <section>
+          <p>Toimiiko</p>
+          <p>Toimiiko</p>
+          <p>Toimiiko</p>
+          <p>Toimiiko</p>
+        </section>
+
       <section className='journey-view--journey-list-container'>
         {journeyList}
       </section>

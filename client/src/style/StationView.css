@@ -8,10 +8,12 @@
     display: flex;
     justify-content: space-around;
     border: 1px solid red;
+    
 }
 
 .station-view--title-container > h3 {
     flex: 1;
+    cursor: pointer;
 }
 
 .station-view--station-list-container {

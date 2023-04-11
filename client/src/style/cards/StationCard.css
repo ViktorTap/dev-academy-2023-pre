@@ -1,9 +1,16 @@
 .station-card--main-container {
-    display: flex;
-    justify-content: space-around;
     border: 1px solid gray;
 }
 
-.station-card--main-container > h3 {
+.station-card--title-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.station-card--title-container > h3 {
     flex: 1;
+}
+
+.station-card--modal-container {
+    display: flex;
 }
