@@ -9,10 +9,12 @@ function StationView() {
   const [pagination, setPagination] = useState("")
 
   async function getStationData(page, month, orderBy){
+
     let responseData;
 
     if (orderBy === 'name'){
       responseData = await stations.getStationsByName(1, 'may');
+
     } else {
       responseData = await stations.getStations(page, month);
     }

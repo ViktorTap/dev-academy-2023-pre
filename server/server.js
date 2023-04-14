@@ -1,9 +1,8 @@
-import express from "express";
-import { pool } from "./db.js";
-import dotenv from "dotenv";
-dotenv.config();
-
+require("dotenv").config();
+const express = require('express')
 const app = express();
+
+const pool = require('./db');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", process.env.ORIGIN);
@@ -11,90 +10,12 @@ app.use(function(req, res, next) {
     next();
   });
 
-app.get("/journeys", async (req, res) => {
 
-    try {
-        const { month, page, limit } = req.query;
-        
-        const offset = (page - 1) * limit;
+app.use(express.json());
 
-        const [data] = await pool.query("SELECT * FROM ?? WHERE duration > 10 OR coveredDistance > 10 LIMIT ? offset ?", [month, +limit, +offset]);
+app.use('/stations', require('./routes/stationRoutes.js'));
 
-        const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM ?? WHERE duration > 10 OR coveredDistance > 10", [month]);
-
-        const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
-
-        res.json({
-            data: data,
-            pagination: {
-                page: +page,
-                limit: +limit,
-                totalPage
-            }
-        })
-    } catch (error) {
-        console.log(error)
-    }
-})
-
-app.get("/stations", async (req, res) => {
-    try {
-        const { month, page, limit } = req.query;
-        
-        const offset = (page - 1) * limit;
-
-        const [data] = await pool.query("SELECT DISTINCT DepartureStationID, DepartureStationName FROM ?? ORDER BY DepartureStationID LIMIT ? OFFSET ?", [month, +limit, +offset])
-
-        const [totalPageData] = await pool.query("SELECT COUNT(DISTINCT DepartureStationID) AS count FROM ??", [month]);
-
-        const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
-
-        console.log("Total pages", totalPage, "of", month);
-
-        res.json({
-            data: data,
-            pagination: {
-                page: +page,
-                limit: +limit,
-                totalPage
-            }
-        })
-        
-    } catch (error) {
-        console.log(error)
-    }
-})
-
-app.get("/stations/order/name", async (req, res) => {
-    try {
-        const { month, page, limit } = req.query;
-        
-        const offset = (page - 1) * limit;
-
-        const [data] = await pool.query("SELECT DISTINCT DepartureStationID, DepartureStationName FROM ?? ORDER BY DepartureStationName LIMIT ? OFFSET ?", [month, +limit, +offset])
-
-        const [totalPageData] = await pool.query("SELECT COUNT(DISTINCT DepartureStationID) AS count FROM ??", [month]);
-
-        const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
-
-        console.log("Total pages", totalPage, "of", month);
-
-        res.json({
-            data: data,
-            pagination: {
-                page: +page,
-                limit: +limit,
-                totalPage
-            }
-        })
-        
-    } catch (error) {
-        console.log(error)
-    }
-})
-
-
-
+app.use('/', require('./routes/journeyRoutes.js'));
 
 app.use((err, req, res, next) => {
     console.log(err.stack);

@@ -10,6 +10,7 @@ export async function getStations(page, month){
     }
 
     try {
+
         const response = await axios.get(baseURL, {
             params: {
                 page: page,
@@ -33,7 +34,7 @@ export async function getStationsByName(page, month){
     }
 
     try {
-        const response = await axios.get(`${baseURL}/order/name`, {
+        const response = await axios.get(`${baseURL}/order-by-name`, {
             params: {
                 page: page,
                 limit: 50,
