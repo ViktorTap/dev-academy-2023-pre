@@ -26,3 +26,19 @@
 .journey-view--pagination-footer-elements {
     flex: 1;
 }
+
+.journey-view--month-container {
+    display: flex;
+}
+
+.journey-view--month-container > div {
+    flex: 1;
+}
+
+.journey-view--month-container > div:hover {
+    background-color: aqua;
+}
+
+.journey-view--month-container .--month-active{
+    background-color: blue;
+}
