@@ -4,9 +4,9 @@ const getAllJourneys = async (req, res) => {
 
     try {
         // add param all true / false
-        const { month, page, limit, all } = req.query;
+        const { month, page, limit} = req.query;
         
-        if (!all && month){
+        if (month != 'all'){
 
             const offset = (page - 1) * limit;
 
@@ -27,11 +27,9 @@ const getAllJourneys = async (req, res) => {
 
         } else {
 
-            console.log("UNION ALL is WORKING")
-
             const offset = (page - 1) * +limit;
 
-            const [data] = await pool.query("SELECT * FROM may UNION ALL SELECT * FROM june UNION ALL SELECT * FROM july WHERE duration > 10 AND coveredDistance > 10 LIMIT ? offset ?", [+limit, +offset]);
+            const [data] = await pool.query("SELECT * FROM may WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM june WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM july WHERE duration > 10 AND coveredDistance > 10 LIMIT ? offset ?", [+limit, +offset]);
     
             const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM (SELECT * FROM may UNION ALL SELECT * FROM june UNION ALL SELECT * FROM july) AS count WHERE duration > 10 AND coveredDistance > 10");
     
@@ -55,9 +53,10 @@ const getAllJourneys = async (req, res) => {
 const getAllJourneysOrderByDepartureStation = async (req, res) => {
 
     try {
-        const { month, page, limit, all } = req.query;
+
+        const { month, page, limit} = req.query;
         
-        if(!all && month) {
+        if(month != 'all') {
             const offset = (page - 1) * limit;
 
             const [data] = await pool.query("SELECT * FROM ?? WHERE duration > 10 AND coveredDistance > 10 ORDER BY DepartureStationName LIMIT ? offset ?", [month, +limit, +offset]);
@@ -75,11 +74,10 @@ const getAllJourneysOrderByDepartureStation = async (req, res) => {
                 }
             })
         } else {
-            console.log("UNION ALL is WORKING ORDER BY DEPARTURE")
 
             const offset = (page - 1) * +limit;
 
-            const [data] = await pool.query("SELECT * FROM may UNION ALL SELECT * FROM june UNION ALL SELECT * FROM july WHERE duration > 10 AND coveredDistance > 10 ORDER BY DepartureStationName LIMIT ? offset ?", [+limit, +offset]);
+            const [data] = await pool.query("SELECT * FROM may WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM june WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM july WHERE duration > 10 AND coveredDistance > 10 ORDER BY DepartureStationName LIMIT ? offset ?", [+limit, +offset]);
     
             const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM (SELECT * FROM may UNION ALL SELECT * FROM june UNION ALL SELECT * FROM july) AS count WHERE duration > 10 AND coveredDistance > 10");
     
@@ -103,24 +101,47 @@ const getAllJourneysOrderByDepartureStation = async (req, res) => {
 const getAllJourneysOrderByArrivalStation = async (req, res) => {
 
     try {
-        const { month, page, limit, all } = req.query;
-        
-        const offset = (page - 1) * limit;
+        const { month, page, limit} = req.query;
 
-        const [data] = await pool.query("SELECT * FROM ?? WHERE duration > 10 AND coveredDistance > 10 ORDER BY ArrivalStationName LIMIT ? offset ?", [month, +limit, +offset]);
+        if(month != 'all'){
+            
+            const offset = (page - 1) * limit;
+    
+            const [data] = await pool.query("SELECT * FROM ?? WHERE duration > 10 AND coveredDistance > 10 ORDER BY ArrivalStationName LIMIT ? offset ?", [month, +limit, +offset]);
+    
+            const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM ?? WHERE duration > 10 AND coveredDistance > 10", [month]);
+    
+            const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
+    
+            res.json({
+                data: data,
+                pagination: {
+                    page: +page,
+                    limit: +limit,
+                    totalPage
+                }
+            })
 
-        const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM ?? WHERE duration > 10 AND coveredDistance > 10", [month]);
+        } else {
 
-        const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
+            const offset = (page - 1) * +limit;
 
-        res.json({
-            data: data,
-            pagination: {
-                page: +page,
-                limit: +limit,
-                totalPage
-            }
-        })
+            const [data] = await pool.query("SELECT * FROM may WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM june WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM july WHERE duration > 10 AND coveredDistance > 10 ORDER BY ArrivalStationName LIMIT ? offset ?", [+limit, +offset]);
+    
+            const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM (SELECT * FROM may UNION ALL SELECT * FROM june UNION ALL SELECT * FROM july) AS count WHERE duration > 10 AND coveredDistance > 10");
+    
+            const totalPage = Math.ceil(+totalPageData[0]?.count / +limit);
+
+            res.json({
+                data: data,
+                pagination: {
+                    page: +page,
+                    limit: +limit,
+                    totalPage
+                }
+            })
+        }
+
     } catch (error) {
         console.log(error)
     }
@@ -129,24 +150,47 @@ const getAllJourneysOrderByArrivalStation = async (req, res) => {
 const getAllJourneysOrderByDistance = async (req, res) => {
 
     try {
-        const { month, page, limit, all } = req.query;
-        
-        const offset = (page - 1) * limit;
+        const { month, page, limit } = req.query;
 
-        const [data] = await pool.query("SELECT * FROM ?? WHERE duration > 10 AND coveredDistance > 10 ORDER BY CoveredDistance LIMIT ? offset ?", [month, +limit, +offset]);
+        if(month != 'all'){
+            
+            const offset = (page - 1) * limit;
+    
+            const [data] = await pool.query("SELECT * FROM ?? WHERE duration > 10 AND coveredDistance > 10 ORDER BY CoveredDistance LIMIT ? offset ?", [month, +limit, +offset]);
+    
+            const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM ?? WHERE duration > 10 AND coveredDistance > 10", [month]);
+    
+            const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
+    
+            res.json({
+                data: data,
+                pagination: {
+                    page: +page,
+                    limit: +limit,
+                    totalPage
+                }
+            })
+        } else {
 
-        const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM ?? WHERE duration > 10 AND coveredDistance > 10", [month]);
+            const offset = (page - 1) * +limit;
 
-        const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
+            const [data] = await pool.query("SELECT * FROM may WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM june WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM july WHERE duration > 10 AND coveredDistance > 10 ORDER BY CoveredDistance LIMIT ? offset ?", [+limit, +offset]);
+    
+            const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM (SELECT * FROM may UNION ALL SELECT * FROM june UNION ALL SELECT * FROM july) AS count WHERE duration > 10 AND coveredDistance > 10");
+    
+            const totalPage = Math.ceil(+totalPageData[0]?.count / +limit);
 
-        res.json({
-            data: data,
-            pagination: {
-                page: +page,
-                limit: +limit,
-                totalPage
-            }
-        })
+            res.json({
+                data: data,
+                pagination: {
+                    page: +page,
+                    limit: +limit,
+                    totalPage
+                }
+            })
+        }
+
+
     } catch (error) {
         console.log(error)
     }
@@ -156,23 +200,45 @@ const getAllJourneysOrderByDuration = async (req, res) => {
 
     try {
         const { month, page, limit, all } = req.query;
-        
-        const offset = (page - 1) * limit;
+        if(month != 'all'){
+            
+            const offset = (page - 1) * limit;
+    
+            const [data] = await pool.query("SELECT * FROM ?? WHERE duration > 10 AND coveredDistance > 10 ORDER BY Duration LIMIT ? offset ?", [month, +limit, +offset]);
+    
+            const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM ?? WHERE duration > 10 AND coveredDistance > 10", [month]);
+    
+            const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
+    
+            res.json({
+                data: data,
+                pagination: {
+                    page: +page,
+                    limit: +limit,
+                    totalPage
+                }
+            })
+        } else {
 
-        const [data] = await pool.query("SELECT * FROM ?? WHERE duration > 10 AND coveredDistance > 10 ORDER BY Duration LIMIT ? offset ?", [month, +limit, +offset]);
+            const offset = (page - 1) * +limit;
 
-        const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM ?? WHERE duration > 10 AND coveredDistance > 10", [month]);
+            const [data] = await pool.query("SELECT * FROM may WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM june WHERE Duration > 10 AND CoveredDistance > 10 UNION ALL SELECT * FROM july WHERE Duration > 10 AND CoveredDistance > 10 ORDER BY Duration LIMIT ? offset ?", [+limit, +offset]);
+    
+            const [totalPageData] = await pool.query("SELECT COUNT(*) AS count FROM (SELECT * FROM may UNION ALL SELECT * FROM june UNION ALL SELECT * FROM july) AS count WHERE duration > 10 AND coveredDistance > 10");
+    
+            const totalPage = Math.ceil(+totalPageData[0]?.count / +limit);
 
-        const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
+            res.json({
+                data: data,
+                pagination: {
+                    page: +page,
+                    limit: +limit,
+                    totalPage
+                }
+            })
+        }
 
-        res.json({
-            data: data,
-            pagination: {
-                page: +page,
-                limit: +limit,
-                totalPage
-            }
-        })
+
     } catch (error) {
         console.log(error)
     }

@@ -5,7 +5,7 @@ import '../../style/cards/StationCard.css'
 function StationCard({ stationID, stationName, stationData }) {
   const [expande, setExpande] = useState(false);
 
-  console.log(stationData)
+  console.log("MIKÄ TÄÄ ON --> ", stationData)
 
   return (
     <main className='station-card--main-container' onClick={() => setExpande(!expande)}>
@@ -17,7 +17,8 @@ function StationCard({ stationID, stationName, stationData }) {
 
       {expande && (
               <section className='station-card--modal-container'>
-                <h3>Toimii</h3>
+                <h3>Total number of Journeys starting from here</h3>
+                <h3>Total number of Journeys ending here</h3>
               </section>
       )}
 

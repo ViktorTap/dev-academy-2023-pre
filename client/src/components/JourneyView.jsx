@@ -62,7 +62,7 @@ function JourneyView() {
           <div className={currentMonth === 'may' ? "--month-active" : ""} onClick={() => getJourneyDataByMonth('may')}><p>MAY</p></div>
           <div className={currentMonth === 'june' ? "--month-active" : ""} onClick={() => getJourneyDataByMonth('june')}><p>JUNE</p></div>
           <div className={currentMonth === 'july' ? "--month-active" : ""} onClick={() => getJourneyDataByMonth('july')}><p>JULY</p></div>
-          <div className={currentMonth === 'all' ? "--month-active" : ""}><p>ALL</p></div>
+          <div className={currentMonth === 'all' ? "--month-active" : ""} onClick={() => getJourneyDataByMonth('all')}><p>ALL</p></div>
       </section>
 
       <section className='journey-view--journey-list-container'>
