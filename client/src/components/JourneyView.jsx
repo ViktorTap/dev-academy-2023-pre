@@ -52,10 +52,10 @@ function JourneyView() {
     <main className='journey-view--main-container'>
 
       <section className='journey-view--title-container'>
-        <h3 onClick={() => getJourneyData(pagination.page, currentMonth, 'departure')}>Departure Station</h3>
-        <h3 onClick={() => getJourneyData(pagination.page, currentMonth, 'arrival')}>Return Station</h3>
-        <h3 onClick={() => getJourneyData(pagination.page, currentMonth, 'distance')}>Covered Distance (km)</h3>
-        <h3 onClick={() => getJourneyData(pagination.page, currentMonth, 'duration')}>Duration (min)</h3>
+        <div onClick={() => getJourneyData(pagination.page, currentMonth, 'departure')}><h3>Departure Station</h3></div>
+        <div onClick={() => getJourneyData(pagination.page, currentMonth, 'arrival')}><h3>Return Station</h3></div>
+        <div onClick={() => getJourneyData(pagination.page, currentMonth, 'distance')}><h3>Covered Distance (km)</h3></div>
+        <div onClick={() => getJourneyData(pagination.page, currentMonth, 'duration')}><h3>Duration (min)</h3></div>
       </section>
 
       <section className='journey-view--month-container'>

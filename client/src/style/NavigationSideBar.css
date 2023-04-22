@@ -2,18 +2,18 @@
     height: 100%;
     width: 100%;
     display: flex;
-    
-    
 }
 
 .navigation-side-bar--navigation-panel{
-    background-color: #e4e4e4;
+    background-color: #faf3dd;
     border-radius: 35px 0px 0 35px;
     border-right: 1px solid black;
-    
-    /* box-shadow: 1px 0 1px 0; */
     flex: 1;
-    
+}
+
+.navigation-side-bar--navigation-panel > h1 {
+    border-bottom: 1px solid black;
+    padding: 10px 0px 15px 0px;
 }
 
 .navigation-side-bar--content-view {
@@ -21,10 +21,21 @@
 }
 
 .navigation-side-bar--link{
-    background-color: aqua;
-    padding: 5px;
+    background-color: #457b9d;
+    padding: 10px;
+    margin: 15px 10px;
+    border-radius: 15px;
+    
+}
+
+.navigation-side-bar--link:hover {
+    background-color: #1d3557;
+    transition: 0.5s;
+    cursor: pointer;
+    
 }
 
 #link {
     text-decoration: none;
+    color: #f1faee;
 }

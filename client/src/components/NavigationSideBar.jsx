@@ -7,12 +7,12 @@ function NavigationSideBar() {
   return (
     <main className='navigation-side-bar--main-container'>
     <section className='navigation-side-bar--navigation-panel'>
-        <h1>Navigation</h1>
+          <h1>NAVIGATION</h1>
         <h2 className='navigation-side-bar--link'>
-          <Link to="/" id='link'>Journeys</Link>
+          <Link to="/" id='link'>JOURNEYS</Link>
         </h2>
         <h2 className='navigation-side-bar--link'>
-          <Link to="/stations" id='link'>Stations</Link>
+          <Link to="/stations" id='link'>STATIONS</Link>
         </h2>
        
         </section>
