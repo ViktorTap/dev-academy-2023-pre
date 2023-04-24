@@ -1,9 +1,17 @@
 .journey-card--main-container {
     display: flex;
     justify-content: space-around;
-    border: 1px solid gray;
+    border: 1px solid #faf3dd;
+    margin-bottom: 7.5px;
+    border-radius: 15px;
+    background-color: #faf3dd;;
+}
+
+.journey-card--main-container:last-child{
+    margin: 0;
 }
 
 .journey-card--main-container > h3 {
     flex: 1;
+    color: #000;
 }

@@ -36,18 +36,11 @@
     color: #f1faee;
 }
 
-.journey-view--journey-list-container {
-    overflow: scroll;
+.journey-view--title-container .--order-active{
+    background-color: #b8f2e6;
 }
 
-.journey-view--pagination-footer {
-    display: flex;
-    justify-content: space-around;
-}
-
-.journey-view--pagination-footer-elements {
-    flex: 1;
-}
+/* --- MONTH CONTAINER --- */
 
 .journey-view--month-container {
     display: flex;
@@ -82,3 +75,36 @@
 .journey-view--month-container .--month-active{
     background-color: #b8f2e6;
 }
+
+.journey-view--loading-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* --- JOURNEY LIST CONTAINER --- */
+.journey-view--journey-list-container {
+    overflow: scroll;
+    margin: 0px 15px 15px 15px;
+    background-color: #a8dadc; 
+    padding: 15px;
+    border-radius: 15px;
+    height: 100%;
+}
+
+/* --- JOURNEY FOOTER CONTAINER --- */
+.journey-view--pagination-footer {
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 15px 15px 15px;
+    background-color: #a8dadc;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.journey-view--pagination-footer-elements {
+    flex: 1;
+    border-radius: 15px;
+}
+
