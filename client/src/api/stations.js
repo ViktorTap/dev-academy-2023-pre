@@ -26,6 +26,28 @@ export async function getStations(page, month){
     }
 }
 
+export async function getStationsWithoutLimit(month){
+
+    if(!month) {
+        console.log("Please, enter the month");
+        return "Please, enter the month";
+    }
+
+    try {
+
+        const response = await axios.get(baseURL, {
+            params: {
+                month: month
+            }
+        })
+
+        return response.data;
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export async function getStationsByName(page, month){
 
     if(!month) {

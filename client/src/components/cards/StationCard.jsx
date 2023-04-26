@@ -5,7 +5,7 @@ import '../../style/cards/StationCard.css'
 function StationCard({ stationID, stationName, stationData }) {
   const [expande, setExpande] = useState(false);
 
-  console.log("MIKÄ TÄÄ ON --> ", stationData)
+  // console.log("MIKÄ TÄÄ ON --> ", stationData)
 
   return (
     <main className='station-card--main-container' onClick={() => setExpande(!expande)}>

@@ -5,8 +5,10 @@ import * as stations from '../api/stations.js';
 import StationCard from './cards/StationCard';
 
 function StationView() {
-  const [stationList, setStationList] = useState([])
-  const [pagination, setPagination] = useState("")
+  const [stationList, setStationList] = useState([]);
+  const [allStations, setAllStations] = useState([]);
+  const [pagination, setPagination] = useState("");
+  const [searchBy, setSearchBy] = useState("");
 
   async function getStationData(page, month, orderBy){
 
@@ -16,10 +18,13 @@ function StationView() {
       responseData = await stations.getStationsByName(1, 'may');
 
     } else {
-      responseData = await stations.getStations(page, month);
+      responseData = await stations.getStations(page, month); 
     }
     
-    console.log(responseData);
+    const allStationsData = await stations.getStationsWithoutLimit(month)
+    setAllStations(allStationsData);
+
+    console.log(allStations.data);
 
     setPagination(responseData.pagination);
 
@@ -31,6 +36,45 @@ function StationView() {
   }
 
 
+  function searchStation(searchBy){
+
+    if(searchBy > 0) {
+
+      searchStationById(searchBy);
+
+    } else {
+
+      searchStationByName(searchBy)
+    }
+  }
+
+  function searchStationByName(searchBy){
+    
+    const foundResult = allStations.data.filter(function(station) {
+      return station.DepartureStationName.toLowerCase() === searchBy.toLowerCase()
+    });
+
+    if (foundResult.length > 0) {
+      setStationList(<StationCard stationID={foundResult[0].DepartureStationID} stationName={foundResult[0].DepartureStationName} stationData={foundResult[0]}/>);
+    } else {
+      setStationList(<p>No station found with {searchBy} name.</p>)
+    }
+  }
+
+  function searchStationById(searchBy){
+    
+    const foundResult = allStations.data.filter(function(station) {
+      return station.DepartureStationID === parseInt(searchBy);
+    });
+    
+    if (foundResult.length > 0) {
+      setStationList(<StationCard stationID={foundResult[0].DepartureStationID} stationName={foundResult[0].DepartureStationName} stationData={foundResult[0]}/>);
+    } else {
+      setStationList(<p>No station found with {searchBy} ID.</p>)
+    }
+    
+  }
+
   useEffect(() => {
     getStationData(1, 'may');
   }, [])
@@ -39,7 +83,13 @@ function StationView() {
   return (
     <main className='station-view--main-container'>
         <section>
-          <p>search by name</p>
+          <label>
+            Search by station name: 
+            <input name='stationName'
+              value={searchBy}
+              onChange={e => setSearchBy(e.target.value)}/>
+            <button onClick={() => searchStation(searchBy)}>SEARCH</button>
+          </label>
         </section>
         <section className='station-view--title-container'>
 
