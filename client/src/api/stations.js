@@ -70,3 +70,18 @@ export async function getStationsByName(page, month){
         console.log(error);
     }
 }
+
+export async function getStationInformationByID(stationID){
+    try {
+        const response = await axios.get(`${baseURL}/information`, {
+            params: {
+                DepartureStationID: stationID,
+            }
+        })
+
+        return response.data;
+
+    } catch (error) {
+        console.log(error);
+    }
+}

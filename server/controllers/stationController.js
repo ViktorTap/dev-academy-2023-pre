@@ -128,4 +128,15 @@ const getStationNumbersByName = async (req, res) => {
     }
 }
 
-module.exports = { getAllStationsOrderById, getAllStationsOrderByName, getStationNumbersByName };
+const getStationInformationByID = async (req, res) => {
+
+    const { DepartureStationID } = req.query;
+
+    const [data] = await pool.query("SELECT * FROM station_information WHERE ID = ?", [DepartureStationID])
+
+    res.json({
+        data: data
+    })
+}
+
+module.exports = { getAllStationsOrderById, getAllStationsOrderByName, getStationNumbersByName, getStationInformationByID };

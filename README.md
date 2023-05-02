@@ -247,3 +247,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+[MySQL.com]: https://www.mysql.com/common/logos/logo-mysql-170x115.png
+[MySQL-url]: https://www.mysql.com/
+[Nodejs.com]: https://p7.hiclipart.com/preview/306/37/167/node-js-javascript-web-application-express-js-computer-software-others.jpg
+[Nodejs-ur]: https://nodejs.org/en

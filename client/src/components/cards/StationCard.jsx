@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
-
+import * as stations from '../../api/stations.js'
+import expandStationCard from './station-card-functions/expandStationCard.js';
 import '../../style/cards/StationCard.css'
 
-function StationCard({ stationID, stationName, stationData }) {
+function StationCard({ stationID, stationName }) {
   const [expande, setExpande] = useState(false);
+  const [stationNumbers, setStationNumbers] = useState([]);
+  const [stationInformation, setStationInformation] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // console.log("MIKÄ TÄÄ ON --> ", stationData)
+  async function getStationNumbers(){
+
+  }
+
+  
+
 
   return (
-    <main className='station-card--main-container' onClick={() => setExpande(!expande)}>
+    <main className='station-card--main-container' onClick={() => expandStationCard({stationID})}>
 
       <section className='station-card--title-container'>
         <h3>{stationID}</h3>

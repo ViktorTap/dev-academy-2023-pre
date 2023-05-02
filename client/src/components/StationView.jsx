@@ -55,7 +55,7 @@ function StationView() {
     });
 
     if (foundResult.length > 0) {
-      setStationList(<StationCard stationID={foundResult[0].DepartureStationID} stationName={foundResult[0].DepartureStationName} stationData={foundResult[0]}/>);
+      setStationList(<StationCard stationID={foundResult[0].DepartureStationID} stationName={foundResult[0].DepartureStationName}/>);
     } else {
       setStationList(<p>No station found with {searchBy} name.</p>)
     }
@@ -82,21 +82,24 @@ function StationView() {
   
   return (
     <main className='station-view--main-container'>
-        <section>
+        <section className='station-view--search-container'>
           <label>
-            Search by station name: 
-            <input name='stationName'
+            <h3>Search by station name:</h3> 
+            <div>
+              <input name='stationName'
               value={searchBy}
               onChange={e => setSearchBy(e.target.value)}/>
-            <button onClick={() => searchStation(searchBy)}>SEARCH</button>
+              <button onClick={() => searchStation(searchBy)} disabled={!searchBy}>SEARCH</button>
+            </div>
           </label>
         </section>
         <section className='station-view--title-container'>
-
+          <div>
           <h3 onClick={() => getStationData(1, 'may')}>Station ID</h3>
-        
+          </div>
+          <div>
           <h3 onClick={() => getStationData(1, 'may', 'name')}>Station Name</h3>
-   
+          </div>
         </section>
           
         <section className='station-view--station-list-container'>
