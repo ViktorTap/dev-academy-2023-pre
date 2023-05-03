@@ -82,26 +82,26 @@ const getAllStationsOrderByName = async (req, res) => {
     }
 }
 
-const getStationNumbersByName = async (req, res) => {
+const getStationNumbersByID = async (req, res) => {
 
     try {
 
-        const { stationName } = req.query;
+        const { stationID } = req.query;
 
         // may
-        const [departureCountMay] = await pool.query("SELECT COUNT(*) as departures FROM may WHERE DepartureStationName=? AND CoveredDistance > 10 AND Duration > 10", [stationName])
+        const [departureCountMay] = await pool.query("SELECT COUNT(*) as departures FROM may WHERE DepartureStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
 
-        const [arrivalCountMay] = await pool.query("SELECT COUNT(*) as arrivals FROM may WHERE ArrivalStationName=? AND CoveredDistance > 10 AND Duration > 10", [stationName])
+        const [arrivalCountMay] = await pool.query("SELECT COUNT(*) as arrivals FROM may WHERE ArrivalStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
 
         // june
-        const [departureCountJune] = await pool.query("SELECT COUNT(*) as departures FROM june WHERE DepartureStationName=? AND CoveredDistance > 10 AND Duration > 10", [stationName])
+        const [departureCountJune] = await pool.query("SELECT COUNT(*) as departures FROM june WHERE DepartureStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
 
-        const [arrivalCountJune] = await pool.query("SELECT COUNT(*) as arrivals FROM june WHERE ArrivalStationName=? AND CoveredDistance > 10 AND Duration > 10", [stationName])
+        const [arrivalCountJune] = await pool.query("SELECT COUNT(*) as arrivals FROM june WHERE ArrivalStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
 
         // july
-        const [departureCountJuly] = await pool.query("SELECT COUNT(*) as departures FROM july WHERE DepartureStationName=? AND CoveredDistance > 10 AND Duration > 10", [stationName])
+        const [departureCountJuly] = await pool.query("SELECT COUNT(*) as departures FROM july WHERE DepartureStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
 
-        const [arrivalCountJuly] = await pool.query("SELECT COUNT(*) as arrivals FROM july WHERE ArrivalStationName=? AND CoveredDistance > 10 AND Duration > 10", [stationName])
+        const [arrivalCountJuly] = await pool.query("SELECT COUNT(*) as arrivals FROM july WHERE ArrivalStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
 
         // all
         const departureCountAll = departureCountMay[0].departures + departureCountJune[0].departures + departureCountJuly[0].departures
@@ -130,13 +130,13 @@ const getStationNumbersByName = async (req, res) => {
 
 const getStationInformationByID = async (req, res) => {
 
-    const { DepartureStationID } = req.query;
+    const { stationID } = req.query;
 
-    const [data] = await pool.query("SELECT * FROM station_information WHERE ID = ?", [DepartureStationID])
+    const [data] = await pool.query("SELECT * FROM station_information WHERE ID = ?", [stationID])
 
     res.json({
         data: data
     })
 }
 
-module.exports = { getAllStationsOrderById, getAllStationsOrderByName, getStationNumbersByName, getStationInformationByID };
+module.exports = { getAllStationsOrderById, getAllStationsOrderByName, getStationNumbersByID, getStationInformationByID };

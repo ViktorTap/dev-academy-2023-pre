@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../style/StationView.css'
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 import * as stations from '../api/stations.js';
 import StationCard from './cards/StationCard';
@@ -7,11 +8,12 @@ import StationCard from './cards/StationCard';
 function StationView() {
   const [stationList, setStationList] = useState([]);
   const [allStations, setAllStations] = useState([]);
+  const [loading, setLoading] = useState(false)
   const [pagination, setPagination] = useState("");
   const [searchBy, setSearchBy] = useState("");
 
   async function getStationData(page, month, orderBy){
-
+    setLoading(true)
     let responseData;
 
     if (orderBy === 'name'){
@@ -24,8 +26,6 @@ function StationView() {
     const allStationsData = await stations.getStationsWithoutLimit(month)
     setAllStations(allStationsData);
 
-    console.log(allStations.data);
-
     setPagination(responseData.pagination);
 
     const mappedStationData = responseData.data.map((station, index) => {
@@ -33,6 +33,7 @@ function StationView() {
    })
 
    setStationList(mappedStationData);
+   setLoading(false);
   }
 
 
@@ -103,7 +104,10 @@ function StationView() {
         </section>
           
         <section className='station-view--station-list-container'>
-          {stationList}
+          {loading ? 
+            <div className='station-view--loading-container'>
+            <PropagateLoader loading={loading} size={15} color='#1d3557'/>
+          </div> : stationList}
         </section>
 
         <section className='station-view--pagination-footer'>

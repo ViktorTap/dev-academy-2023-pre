@@ -1,5 +1,12 @@
 .station-card--main-container {
     border: 1px solid gray;
+    /* display: flex; */
+    /* justify-content: space-around;*/
+    border: 1px solid #faf3dd;
+    margin-bottom: 7.5px;
+    border-radius: 15px;
+    background-color: #faf3dd;
+    cursor: pointer;
 }
 
 .station-card--title-container {
@@ -13,4 +20,24 @@
 
 .station-card--modal-container {
     display: flex;
+
+}
+
+.station-card--loading-container {
+    flex: 1;
+}
+
+.station-card--information{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid red;
+    width: 100%;
+}
+
+.station-card--left-info-box{
+
+}
+
+.station-card--right-info-box{
+    
 }
