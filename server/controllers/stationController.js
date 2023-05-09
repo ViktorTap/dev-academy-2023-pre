@@ -90,18 +90,21 @@ const getStationNumbersByID = async (req, res) => {
 
         // may
         const [departureCountMay] = await pool.query("SELECT COUNT(*) as departures FROM may WHERE DepartureStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
-
+        const [departureAverageMay] = await pool.query("SELECT AVG(CoveredDistance) AS AverageDepartureDistanceMay FROM may WHERE DepartureStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
         const [arrivalCountMay] = await pool.query("SELECT COUNT(*) as arrivals FROM may WHERE ArrivalStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
+        const [arrivalAverageMay] = await pool.query("SELECT AVG(CoveredDistance) AS AverageArrivalDistanceMay FROM may WHERE ArrivalStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
 
         // june
         const [departureCountJune] = await pool.query("SELECT COUNT(*) as departures FROM june WHERE DepartureStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
-
+        const [departureAverageJune] = await pool.query("SELECT AVG(CoveredDistance) AS AverageDepartureDistanceJune FROM june WHERE DepartureStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
         const [arrivalCountJune] = await pool.query("SELECT COUNT(*) as arrivals FROM june WHERE ArrivalStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
+        const [arrivalAverageJune] = await pool.query("SELECT AVG(CoveredDistance) AS AverageArrivalDistanceJune FROM june WHERE ArrivalStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
 
         // july
         const [departureCountJuly] = await pool.query("SELECT COUNT(*) as departures FROM july WHERE DepartureStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
-
+        const [departureAverageJuly] = await pool.query("SELECT AVG(CoveredDistance) AS AverageDepartureDistanceJuly FROM july WHERE DepartureStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
         const [arrivalCountJuly] = await pool.query("SELECT COUNT(*) as arrivals FROM july WHERE ArrivalStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
+        const [arrivalAverageJuly] = await pool.query("SELECT AVG(CoveredDistance) AS AverageArrivalDistanceJuly FROM july WHERE ArrivalStationID=? AND CoveredDistance > 10 AND Duration > 10", [stationID])
 
         // all
         const departureCountAll = departureCountMay[0].departures + departureCountJune[0].departures + departureCountJuly[0].departures
@@ -120,7 +123,23 @@ const getStationNumbersByID = async (req, res) => {
                     june: arrivalCountJune[0].arrivals,
                     july: arrivalCountJuly[0].arrivals,
                     all: arrivalCountAll
-                }
+                },
+
+                average: {
+                    may: {departures: departureAverageMay[0],
+                    arrivals: arrivalAverageMay[0]},
+                    june: {
+                        departures: departureAverageJune[0],
+                        arrivals: arrivalAverageJune[0]
+                    },
+                    july: {
+                        departures: departureAverageJuly[0],
+                        arrivals: arrivalAverageJuly[0]
+                    }
+
+                },
+
+                
         })
 
     } catch (error) {

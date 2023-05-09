@@ -1,5 +1,5 @@
 .station-card--main-container {
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     /* display: flex; */
     /* justify-content: space-around;*/
     border: 1px solid #faf3dd;
@@ -25,19 +25,51 @@
 
 .station-card--loading-container {
     flex: 1;
+    height: 25px;
 }
 
 .station-card--information{
     display: flex;
     justify-content: space-around;
-    border: 1px solid red;
     width: 100%;
+    padding-bottom: 15px;
+    
 }
 
 .station-card--left-info-box{
-
+    background-color: #f1faee;
+    flex: 1;
+    margin: 0 7.5px 0px 15px; 
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .station-card--right-info-box{
-    
+    background-color: #f1faee;
+    flex: 1;
+    margin: 0 15px 0px 7.5px;
+    border-radius: 15px;
+ 
+   
+}
+
+.station-card--address-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: -20px;
+}
+
+.station-card--map-container{
+    width: 100%;
+    height: 100%;
+    border: 1px solid orange;
+}
+
+.station-card--average-info-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
