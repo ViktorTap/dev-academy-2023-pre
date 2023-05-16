@@ -22,8 +22,8 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 })
 
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
     console.log('Server is running on port 8080')
 })
 
-module.exports = app;
+module.exports = {app, server}
