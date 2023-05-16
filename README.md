@@ -84,31 +84,95 @@ ABOUT THE PROJECT
 
 This is the pre-assignment for <a href="https://github.com/solita/dev-academy-2023-exercise"> Solita Dev Academy Finland 2023 </a>. Fullstack web application with own backend and frontend. 
 
+In this application, you can find every bike ride made through Helsinki City App from May 2021 to July 2021. You can look, find or order by column given journeys or stations.
+
 <p align="right"><a href="#readme-top">back to top</a></p>
 
 
 ### Built With
 
-* [![React][React.js]][React-url]
-* [![MySQL][MySQL.com]][MySQL-url]
-* [![NodeJS][Nodejs.com]][Nodejs-url]
+#### [REACT][React-url]
+#### [MYSQL][Mysql-url]
+#### [NODEJS][Nodejs-url]
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
 
-<!-- GETTING STARTED 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+In this section I will provide necessary information to install this application locally that you can test, destroy and build again. 😉
 
 ### Prerequisites
+# Setting up database
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+In this project I use MySQL database. In this tutorial, I will guide you through every step in working with MySQL database. We are going to cover:
+
+1. Installing MySQL server on your machine.
+2. Creating and setting up database.
+3. Adding and validating data without data loss (hopefully).
+
+I use Windows machine and if you are not, please look for additional information through official websites how to install and deal with possible problems on your OS. So without further do, let’s begin from phase 1.
+
+## 1. Install MySQL
+
+1. We are going to use “**MySQL Installer**” through we can install all necessary programs. Go visit
+    
+    [https://dev.mysql.com/downloads/installer/](https://dev.mysql.com/downloads/installer/) and install **MySQL Installer** on your machine.
+    
+
+1. After installation, open **MySQL Installer** and you will see this kind of menu (without already installed programs)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7523966b-bc33-416b-acbf-8d886d5c49ab/Untitled.png)
+
+1. Click Add and choose **MySQL Server** and **MySQL Workbench** to install. Press arrow to the right and install those programs. We will need them for running MySQL server and for working with databases. 
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/903e581d-3d14-4a48-a038-4fc8d1ba5ccf/Untitled.png)
+
+1. For further information about installation, please read this guide → [https://phoenixnap.com/kb/install-mysql-on-windows](https://phoenixnap.com/kb/install-mysql-on-windows)
+2. Run **MySQL server.** You can do it through console like in the guide above, or you can open your task manager and find MySQL80 in services and click START.
+
+## 2. Creating and setting up database.
+
+1. Open **MySQL Workbench** and set up your first connection. Use this guide → [https://www.delftstack.com/howto/mysql/create-new-database-in-mysql-workbench/](https://www.delftstack.com/howto/mysql/create-new-database-in-mysql-workbench/)
+
+---
+
+**BUT before creating any database**, we need to see what kind of data we are going to use in this project. Download files below:
+
+**The data is owned by City Bike Finland.**
+
+- [https://dev.hsl.fi/citybikes/od-trips-2021/2021-05.csv](https://dev.hsl.fi/citybikes/od-trips-2021/2021-05.csv)
+- [https://dev.hsl.fi/citybikes/od-trips-2021/2021-06.csv](https://dev.hsl.fi/citybikes/od-trips-2021/2021-06.csv)
+- [https://dev.hsl.fi/citybikes/od-trips-2021/2021-07.csv](https://dev.hsl.fi/citybikes/od-trips-2021/2021-07.csv)
+
+Also, there is a dataset that has information about Helsinki Region Transport’s (HSL) city bicycle stations.
+
+- Dataset: [https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv](https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv)
+- License and information: [https://www.avoindata.fi/data/en/dataset/hsl-n-kaupunkipyoraasemat/resource/a23eef3a-cc40-4608-8aa2-c730d17e8902](https://www.avoindata.fi/data/en/dataset/hsl-n-kaupunkipyoraasemat/resource/a23eef3a-cc40-4608-8aa2-c730d17e8902)
+
+---
+
+1. Open CSV file in Excel and look for first line. You will see this:
+<p>
+<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bd33865a-1bba-4904-a68b-899f5c3d3a12/Untitled.png" alt="caption 1")>
+</p>
+So we have: 
+
+Departure, Return, 
+
+Departure Station ID, 
+
+Departure Station Name, 
+
+Return Station ID, 
+
+Return Station Name, 
+
+Covered Distance (m) and Duration (sec.) 
+
+This information we need to properly establish our database for this project.
+
+### 2.1 Creating database and importing CSV files.
 
 ### Installation
 
@@ -128,7 +192,7 @@ This is an example of how to list things you need to use the software and how to
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
--->
+
 
 <!-- USAGE EXAMPLES 
 ## Usage
@@ -151,57 +215,14 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Viktor Tap - [https://github.com/ViktorTap](https://github.com/ViktorTap)
+Viktor Tap - [GitHub Profile](https://github.com/ViktorTap)
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [GitHub REP.](https://github.com/ViktorTap/dev-academy-2023-pre)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
-
-
-<!-- ACKNOWLEDGMENTS 
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
--->
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
-[MySQL.com]: https://www.mysql.com/common/logos/logo-mysql-170x115.png
 [MySQL-url]: https://www.mysql.com/
-[Nodejs.com]: https://p7.hiclipart.com/preview/306/37/167/node-js-javascript-web-application-express-js-computer-software-others.jpg
-[Nodejs-ur]: https://nodejs.org/en
+[Nodejs-url]: https://nodejs.org/en
