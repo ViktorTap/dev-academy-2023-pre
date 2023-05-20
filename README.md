@@ -1,23 +1,19 @@
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
+<div align="center" id="readme-top">
   <a href="https://github.com/ViktorTap/dev-academy-2023-pre">
     <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/app-logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Helsinki City Bike App | PRE-ASSIGNMENT </h3>
+<h3 align="center" >Helsinki City Bike App | PRE-ASSIGNMENT </h3>
 
   <p align="center">
     This is the pre-assignment for <a href="https://github.com/solita/dev-academy-2023-exercise">Solita</a> Dev Academy Finland 2023.
-    <br />
-    <a href="https://github.com/ViktorTap/dev-academy-2023-pre"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
   </p>
 </div>
 
 
-
+<div align="center">
 TABLE OF CONTENTS 
 <details>
   <summary>Table of Contents</summary>
@@ -39,13 +35,18 @@ TABLE OF CONTENTS
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#license">License</a></li>
+    <li>
+      <ul>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#journeys">Usage</a></li>
+        <li><a href="#stations">Usage</a></li>
+      </ul>
+    </li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
+</div>
 
-ABOUT THE PROJECT 
 ## About The Project
 
 <p align="center" width="100%">
@@ -195,7 +196,6 @@ y VARCHAR(255)
 
 ```
 ### 3. Adding and validating data
-
 Now we are ready to load data from CSV file into our database. We will use MYSQL own method called LOAD DATA INFILE.
 We are going to pass NULL values also.
 
@@ -210,9 +210,11 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (Departure, Arrival, DepartureStationID, DepartureStationName, ArrivalStationID, ArrivalStationName, @CoveredDistance, @Duration )
 SET CoveredDistance, Duration = IF(@CoveredDistancer = ",,", NULL, @CoveredDistance), Duration = IF(@Duration = "", NULL, @Duration); 
+```
 
-// FOR STATION INFORMATION CSV:
+FOR STATION INFORMATION CSV:
 
+```sh
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/station-information.csv' INTO TABLE station_information
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
@@ -220,15 +222,14 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (FID, ID, Nimi, Namn, StationName, Osoite, Adress, Kaupunki, Stad, @Operaattor, Kapasiteet, x, y)
 SET Operaattor = IF(@Operattor = ",,", NULL, @Operattor);
-
 ```
+
 I hope everything works fine at your end. :) 
 
 Now it’s the time to move into REACT and set up code itself.
 
 ## Installation
 #### REACT Front- and Back-end
-
 I assume you are familiar with REACT and Git. That is why this section’s guide is simple. 
 
 1. Clone the repo
@@ -251,27 +252,73 @@ I assume you are familiar with REACT and Git. That is why this section’s guide
 
 5. Test the app
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 ## Usage
+In this section I will show features of this app. Nothing complicated. Very simple, but working features.
 
+### Journeys
+In this app you can look through journeys which are made in May, June and July. There is possibility to order journeys by departure or arrival station, covered distance and by journey duration. 
 
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/001-app.png" width="75%" alt="my-sql menu">
+</p>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Pagination is made at the backend. So app is preloading only 50 pieces of data.
 
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/009-app-order-by-jouneys.png" width="75%" alt="my-sql menu">
+</p>
 
-<!-- LICENSE 
-## License
+### Stations
+At the stations tab, stations are ordered by ID by default, but you can order them by name.
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/002-app.png" width="75%" alt="my-sql menu">
+</p>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Every station is clickable and there you can find addition information about the station. The map is nice to have, but I didn’t do it because google’s payment registration… 😕
 
--->
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/003-app.png" width="75%" alt="my-sql menu">
+</p>
+  
+If station exists but no addition information found.
+
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/006-app-no-data-found.png" width="75%" alt="my-sql menu">
+</p>
+
+It is possible to search station by name or by ID, but search function is very simple, and you need to write exact station name or ID to find it.
+
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/005-app-simple-name-search.png" width="75%" alt="my-sql menu">
+</p>
+  
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/004-app-simple-id-search.png" width="75%" alt="my-sql menu")>
+</p>
+  
+If there is no station found by ID or by the name, the app will tell about it.
+
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/008-app-no-station-found-name.png" width="75%" alt="my-sql menu">
+</p>
+  
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/007-app-no-station-found-id.png" width="75%" alt="my-sql menu">
+</p>
+
+#### Tests
+I made some simple data fetching tests also.
+
+<p align="center" width="100%">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/tests.png" width="50%" alt="my-sql menu">
+</p>
+
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 ## Contact
-
 Viktor Tap - [GitHub Profile](https://github.com/ViktorTap)
 
 Project Link: [GitHub REP.](https://github.com/ViktorTap/dev-academy-2023-pre)
