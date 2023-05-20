@@ -1,12 +1,9 @@
 const supertest = require('supertest');
 const {app, server} = require('../server');
-// const { expect } = require('chai');
-// const chai = require('chai')
-// const should = chai.should;
 
 
-afterEach(done => { // afterEach function is provided by Jest and executes once all tests are finished
-    server.close() // We close the server connection once all tests have finished
+afterEach(done => { 
+    server.close() 
     done()
 })
 

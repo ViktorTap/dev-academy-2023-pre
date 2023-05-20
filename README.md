@@ -122,7 +122,7 @@ I use Windows machine and if you are not, please look for additional information
 
 1. After installation, open **MySQL Installer** and you will see this kind of menu (without already installed programs)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7523966b-bc33-416b-acbf-8d886d5c49ab/Untitled.png)
+[[https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7523966b-bc33-416b-acbf-8d886d5c49ab/Untitled.png|alt=mysql-menu]
 
 1. Click Add and choose **MySQL Server** and **MySQL Workbench** to install. Press arrow to the right and install those programs. We will need them for running MySQL server and for working with databases. 
 
