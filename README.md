@@ -1,37 +1,8 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
--->
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/ViktorTap/dev-academy-2023-pre">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/app-logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Helsinki City Bike App | PRE-ASSIGNMENT </h3>
@@ -42,13 +13,6 @@
     <a href="https://github.com/ViktorTap/dev-academy-2023-pre"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <!-- 
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
-    -->
   </p>
 </div>
 
@@ -67,7 +31,11 @@ TABLE OF CONTENTS
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li>
+          <ul>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#setting-up-database">Setting Up Database</a></li>
+          </ul></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -80,7 +48,9 @@ TABLE OF CONTENTS
 ABOUT THE PROJECT 
 ## About The Project
 
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+<p align="center" width="100%">
+<img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/001-app.png" width="75%" alt="my-sql menu")>
+  </p>
 
 This is the pre-assignment for <a href="https://github.com/solita/dev-academy-2023-exercise"> Solita Dev Academy Finland 2023 </a>. Fullstack web application with own backend and frontend. 
 
@@ -89,21 +59,20 @@ In this application, you can find every bike ride made through Helsinki City App
 <p align="right"><a href="#readme-top">back to top</a></p>
 
 
-### Built With
+## Built With
 
-#### [REACT][React-url]
-#### [MYSQL][Mysql-url]
-#### [NODEJS][Nodejs-url]
+##### [REACT][React-url]
+##### [MYSQL][Mysql-url]
+##### [NODEJS][Nodejs-url]
 
 <p align="right"><a href="#readme-top">back to top</a></p>
-
 
 ## Getting Started
 
 In this section I will provide necessary information to install this application locally that you can test, destroy and build again. 😉
 
 ### Prerequisites
-# Setting up database
+#### Setting up database
 
 In this project I use MySQL database. In this tutorial, I will guide you through every step in working with MySQL database. We are going to cover:
 
@@ -113,7 +82,7 @@ In this project I use MySQL database. In this tutorial, I will guide you through
 
 I use Windows machine and if you are not, please look for additional information through official websites how to install and deal with possible problems on your OS. So without further do, let’s begin from phase 1.
 
-## 1. Installing MySQL server on your machine.
+### 1. Installing MySQL server on your machine.
 
 1. We are going to use “**MySQL Installer**” through we can install all necessary programs. Go visit
     
@@ -135,7 +104,7 @@ I use Windows machine and if you are not, please look for additional information
 4. For further information about installation, please read this guide → [https://phoenixnap.com/kb/install-mysql-on-windows](https://phoenixnap.com/kb/install-mysql-on-windows)
 5. Run **MySQL server.** You can do it through console like in the guide above, or you can open your task manager and find MySQL80 in services and click START.
 
-## 2. Creating and setting up database.
+### 2. Creating and setting up database.
 
 1. Open **MySQL Workbench** and set up your first connection. Use this guide → [https://www.delftstack.com/howto/mysql/create-new-database-in-mysql-workbench/](https://www.delftstack.com/howto/mysql/create-new-database-in-mysql-workbench/)
 
@@ -225,7 +194,7 @@ y VARCHAR(255)
 );
 
 ```
-## 3. Adding and validating data
+### 3. Adding and validating data
 
 Now we are ready to load data from CSV file into our database. We will use MYSQL own method called LOAD DATA INFILE.
 We are going to pass NULL values also.
@@ -257,7 +226,8 @@ I hope everything works fine at your end. :)
 
 Now it’s the time to move into REACT and set up code itself.
 
-### Installation REACT Front- and Back-end
+## Installation
+#### REACT Front- and Back-end
 
 I assume you are familiar with REACT and Git. That is why this section’s guide is simple. 
 
