@@ -32,15 +32,13 @@ TABLE OF CONTENTS
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li>
-      <ul>
-        <li><a href="#usage">Usage</a></li>
-        <ul>
+        <li>
+          <a href="#usage">Usage</a>
+       <ul>
           <li><a href="#journeys">Journeys</a></li>
           <li><a href="#stations">Stations</a></li>
         </ul>
-      </ul>
-    </li>
+     </li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
