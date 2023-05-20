@@ -7,23 +7,10 @@ const getAllStationsOrderById = async (req, res) => {
 
         if (!limit && !page){
 
-            // const offset = (page - 1) * limit;
-
             const [data] = await pool.query("SELECT DISTINCT DepartureStationID, DepartureStationName FROM ?? ORDER BY DepartureStationID", [month])
-    
-            // const [totalPageData] = await pool.query("SELECT COUNT(DISTINCT DepartureStationID) AS count FROM ??", [month]);
-    
-            // const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
-    
-            // console.log("Total pages", totalPage, "of", month);
     
             res.json({
                 data: data,
-                // pagination: {
-                //     page: +page,
-                //     limit: +limit,
-                //     totalPage
-                // }
             })
 
         } else {
@@ -35,8 +22,6 @@ const getAllStationsOrderById = async (req, res) => {
             const [totalPageData] = await pool.query("SELECT COUNT(DISTINCT DepartureStationID) AS count FROM ??", [month]);
     
             const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
-    
-            console.log("Total pages", totalPage, "of", month);
     
             res.json({
                 data: data,
@@ -65,8 +50,6 @@ const getAllStationsOrderByName = async (req, res) => {
         const [totalPageData] = await pool.query("SELECT COUNT(DISTINCT DepartureStationID) AS count FROM ??", [month]);
 
         const totalPage = Math.ceil(+totalPageData[0]?.count / limit);
-
-        console.log("Total pages", totalPage, "of", month);
 
         res.json({
             data: data,

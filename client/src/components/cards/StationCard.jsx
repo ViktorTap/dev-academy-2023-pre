@@ -39,23 +39,24 @@ function StationCard({ stationID, stationName }) {
          
           <PropagateLoader loading={loading} size={15} color='#1d3557'/>
         </div> : <section className='station-card--information'>
-
+          {!stationInformationAndNumbers.stationInformation ? <h1 style={{"color": "red"}}>No Data Found</h1> :
+            <>
                   <div className='station-card--left-info-box'>
 
                   <div className='station-card--left-info-departures'>
                     <h5>Journeys starting from here:</h5>
-                    <p>MAY: {stationInformationAndNumbers.stationNumbers.departures.may}</p>
-                    <p>JUNE: {stationInformationAndNumbers.stationNumbers.departures.june}</p>
-                    <p>JULY: {stationInformationAndNumbers.stationNumbers.departures.july}</p>
-                    <p>TOTAL: {stationInformationAndNumbers.stationNumbers.departures.all}</p>
+                    <p>MAY: {stationInformationAndNumbers.stationNumbers.departures.may }</p>
+                    <p>JUNE: {stationInformationAndNumbers.stationNumbers.departures.june }</p>
+                    <p>JULY: {stationInformationAndNumbers.stationNumbers.departures.july }</p>
+                    <p>TOTAL: {stationInformationAndNumbers.stationNumbers.departures.all }</p>
                   </div >
 
                   <div className='station-card--left-info-arrivals'>
                     <h5>Journeys ending here:</h5>
-                    <p>MAY: {stationInformationAndNumbers.stationNumbers.arrivals.may}</p>
-                    <p>JUNE: {stationInformationAndNumbers.stationNumbers.arrivals.june}</p>
-                    <p>JULY: {stationInformationAndNumbers.stationNumbers.arrivals.july}</p>
-                    <p>TOTAL: {stationInformationAndNumbers.stationNumbers.arrivals.all}</p>
+                    <p>MAY: {stationInformationAndNumbers.stationNumbers.arrivals.may }</p>
+                    <p>JUNE: {stationInformationAndNumbers.stationNumbers.arrivals.june }</p>
+                    <p>JULY: {stationInformationAndNumbers.stationNumbers.arrivals.july }</p>
+                    <p>TOTAL: {stationInformationAndNumbers.stationNumbers.arrivals.all }</p>
                   </div>
 
                 </div>
@@ -79,8 +80,10 @@ function StationCard({ stationID, stationName }) {
                   </div>
                   </div>
                 </div>
-                
+                </>
+                }
                 </section>}
+  
       </section>}
     </main>
     

@@ -85,7 +85,7 @@ function StationView() {
     <main className='station-view--main-container'>
         <section className='station-view--search-container'>
           <label>
-            <h3>Search by station name:</h3> 
+            <h3>Search by station name or ID:</h3> 
             <div>
               <input name='stationName'
               value={searchBy}
