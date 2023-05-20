@@ -120,16 +120,20 @@ I use Windows machine and if you are not, please look for additional information
     [https://dev.mysql.com/downloads/installer/](https://dev.mysql.com/downloads/installer/) and install **MySQL Installer** on your machine.
     
 
-1. After installation, open **MySQL Installer** and you will see this kind of menu (without already installed programs)
+2. After installation, open **MySQL Installer** and you will see this kind of menu (without already installed programs)
 
-[[https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7523966b-bc33-416b-acbf-8d886d5c49ab/Untitled.png|alt=mysql-menu]
+<p align="center" width="100%">
+<img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/001-my-sql.png" alt="my-sql menu")>
+  </p>
 
-1. Click Add and choose **MySQL Server** and **MySQL Workbench** to install. Press arrow to the right and install those programs. We will need them for running MySQL server and for working with databases. 
+3. Click Add and choose **MySQL Server** and **MySQL Workbench** to install. Press arrow to the right and install those programs. We will need them for running MySQL server and for working with databases. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/903e581d-3d14-4a48-a038-4fc8d1ba5ccf/Untitled.png)
+<p align="center" width="100%">
+<img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/002-my-sql.png" alt="my-sql menu")>
+  </p>
 
-1. For further information about installation, please read this guide → [https://phoenixnap.com/kb/install-mysql-on-windows](https://phoenixnap.com/kb/install-mysql-on-windows)
-2. Run **MySQL server.** You can do it through console like in the guide above, or you can open your task manager and find MySQL80 in services and click START.
+4. For further information about installation, please read this guide → [https://phoenixnap.com/kb/install-mysql-on-windows](https://phoenixnap.com/kb/install-mysql-on-windows)
+5. Run **MySQL server.** You can do it through console like in the guide above, or you can open your task manager and find MySQL80 in services and click START.
 
 ## 2. Creating and setting up database.
 
@@ -153,9 +157,9 @@ Also, there is a dataset that has information about Helsinki Region Transport’
 ---
 
 1. Open CSV file in Excel and look for first line. You will see this:
-<p>
-<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bd33865a-1bba-4904-a68b-899f5c3d3a12/Untitled.png" alt="caption 1")>
-</p>
+<p align="center" width="100%">
+<img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/003-my-sql.png" alt="my-sql menu")>
+  </p>
 So we have: 
 
 Departure, Return, 
@@ -174,7 +178,85 @@ This information we need to properly establish our database for this project.
 
 ### 2.1 Creating database and importing CSV files.
 
-### Installation
+Establish your first database using MYSQL Workbench, which we installed already. Use this link for help → [https://blog.devart.com/creating-a-new-database-in-mysql-tutorial-with-examples.html](https://blog.devart.com/creating-a-new-database-in-mysql-tutorial-with-examples.html)
+
+I called my database jouney_db. In workbench’s main window, I write the following query:
+```sh
+
+use journey_db;
+
+CREATE TABLE may
+(
+Departure VARCHAR(255),
+Arrival VARCHAR(255),
+DepartureStationID INT,
+DepartureStationName VARCHAR(255),
+
+ArrivalStationID INT,
+ArrivalStationName VARCHAR(255),
+
+CoveredDistance INT,
+Duration INT);
+
+```
+As you can see, we only created may table. Please do the same for June and July.
+
+Then we need a table, which will contain addition information about stations.
+
+```sh
+
+CREATE TABLE station_information(
+FID INT PRIMARY KEY,
+ID INT,
+
+Nimi VARCHAR(255),
+Namn VARCHAR(255),
+StationName VARCHAR(255),
+
+Osoite VARCHAR(255),
+Adress VARCHAR(255),
+
+Kaupunki VARCHAR(255),
+Stad VARCHAR(255),
+
+Operaattor VARCHAR(255),
+Kapasiteet VARCHAR(255),
+
+x VARCHAR(255),
+y VARCHAR(255)
+);
+
+```
+Now we are ready to load data from CSV file into our database. We will use MYSQL own method called LOAD DATA INFILE.
+We are going to pass NULL values also.
+
+After you created all necessary tables, do the following:
+**Copy or move CSV files into your MySQL Uploads folder. Example path you can see in the query below | your folder structure may be different.**
+```sh
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/may.csv' INTO TABLE station_information
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(Departure, Arrival, DepartureStationID, DepartureStationName, ArrivalStationID, ArrivalStationName, @CoveredDistance, @Duration )
+SET CoveredDistance, Duration = IF(@CoveredDistancer = ",,", NULL, @CoveredDistance), Duration = IF(@Duration = "", NULL, @Duration); 
+
+// FOR STATION INFORMATION CSV:
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/station-information.csv' INTO TABLE station_information
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(FID, ID, Nimi, Namn, StationName, Osoite, Adress, Kaupunki, Stad, @Operaattor, Kapasiteet, x, y)
+SET Operaattor = IF(@Operattor = ",,", NULL, @Operattor);
+
+```
+I hope everything works fine at your end. :) 
+
+Now it’s the time to move into REACT and set up code itself.
+
+### Installation REACT Front- and Back-end
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
