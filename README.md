@@ -12,8 +12,6 @@
   </p>
 </div>
 
-
-<div align="center">
 TABLE OF CONTENTS 
 <details>
   <summary>Table of Contents</summary>
@@ -38,20 +36,19 @@ TABLE OF CONTENTS
     <li>
       <ul>
         <li><a href="#usage">Usage</a></li>
-        <li><a href="#journeys">Usage</a></li>
-        <li><a href="#stations">Usage</a></li>
+        <li><a href="#journeys">Journeys</a></li>
+        <li><a href="#stations">Stations</a></li>
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
-</div>
 
 ## About The Project
 
 <p align="center" width="100%">
-<img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/001-app.png" width="75%" alt="my-sql menu")>
-  </p>
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/001-app.png" width="75%" alt="my-sql menu">
+</p>
 
 This is the pre-assignment for <a href="https://github.com/solita/dev-academy-2023-exercise"> Solita Dev Academy Finland 2023 </a>. Fullstack web application with own backend and frontend. 
 
@@ -93,14 +90,14 @@ I use Windows machine and if you are not, please look for additional information
 2. After installation, open **MySQL Installer** and you will see this kind of menu (without already installed programs)
 
 <p align="center" width="100%">
-<img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/001-my-sql.png" alt="my-sql menu")>
-  </p>
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/001-my-sql.png" alt="my-sql menu">
+ </p>
 
 3. Click Add and choose **MySQL Server** and **MySQL Workbench** to install. Press arrow to the right and install those programs. We will need them for running MySQL server and for working with databases. 
 
 <p align="center" width="100%">
-<img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/002-my-sql.png" alt="my-sql menu")>
-  </p>
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/002-my-sql.png" alt="my-sql menu workbench">
+</p>
 
 4. For further information about installation, please read this guide → [https://phoenixnap.com/kb/install-mysql-on-windows](https://phoenixnap.com/kb/install-mysql-on-windows)
 5. Run **MySQL server.** You can do it through console like in the guide above, or you can open your task manager and find MySQL80 in services and click START.
@@ -128,10 +125,10 @@ Also, there is a dataset that has information about Helsinki Region Transport’
 
 1. Open CSV file in Excel and look for first line. You will see this:
 <p align="center" width="100%">
-<img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/003-my-sql.png" alt="my-sql menu")>
-  </p>
-So we have: 
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/003-my-sql.png" alt="excel table")>
+</p>
 
+So we have: 
 Departure, Return, 
 
 Departure Station ID, 
@@ -261,59 +258,59 @@ In this section I will show features of this app. Nothing complicated. Very simp
 In this app you can look through journeys which are made in May, June and July. There is possibility to order journeys by departure or arrival station, covered distance and by journey duration. 
 
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/001-app.png" width="75%" alt="my-sql menu">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/001-app.png" width="75%" alt="journey tab">
 </p>
 
 Pagination is made at the backend. So app is preloading only 50 pieces of data.
 
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/009-app-order-by-jouneys.png" width="75%" alt="my-sql menu">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/009-app-order-by-jouneys.png" width="75%" alt="ordered by departure journey tab ">
 </p>
 
 ### Stations
 At the stations tab, stations are ordered by ID by default, but you can order them by name.
 
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/002-app.png" width="75%" alt="my-sql menu">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/002-app.png" width="75%" alt="stations tab">
 </p>
 
 Every station is clickable and there you can find addition information about the station. The map is nice to have, but I didn’t do it because google’s payment registration… 😕
 
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/003-app.png" width="75%" alt="my-sql menu">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/003-app.png" width="75%" alt="station information">
 </p>
   
 If station exists but no addition information found.
 
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/006-app-no-data-found.png" width="75%" alt="my-sql menu">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/006-app-no-data-found.png" width="75%" alt="no data found">
 </p>
 
 It is possible to search station by name or by ID, but search function is very simple, and you need to write exact station name or ID to find it.
 
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/005-app-simple-name-search.png" width="75%" alt="my-sql menu">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/005-app-simple-name-search.png" width="75%" alt="station search by name">
 </p>
   
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/004-app-simple-id-search.png" width="75%" alt="my-sql menu")>
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/004-app-simple-id-search.png" width="75%" alt="station search by ID")>
 </p>
   
 If there is no station found by ID or by the name, the app will tell about it.
 
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/008-app-no-station-found-name.png" width="75%" alt="my-sql menu">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/008-app-no-station-found-name.png" width="75%" alt="no station found by name">
 </p>
   
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/007-app-no-station-found-id.png" width="75%" alt="my-sql menu">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/007-app-no-station-found-id.png" width="75%" alt="no station found by ID">
 </p>
 
 #### Tests
 I made some simple data fetching tests also.
 
 <p align="center" width="100%">
-  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/tests.png" width="50%" alt="my-sql menu">
+  <img src="https://github.com/ViktorTap/dev-academy-2023-pre/blob/main/images/tests.png" width="50%" alt="tests">
 </p>
 
 <p align="right"><a href="#readme-top">back to top</a></p>
