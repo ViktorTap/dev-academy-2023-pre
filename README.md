@@ -113,7 +113,7 @@ In this project I use MySQL database. In this tutorial, I will guide you through
 
 I use Windows machine and if you are not, please look for additional information through official websites how to install and deal with possible problems on your OS. So without further do, let’s begin from phase 1.
 
-## 1. Install MySQL
+## 1. Installing MySQL server on your machine.
 
 1. We are going to use “**MySQL Installer**” through we can install all necessary programs. Go visit
     
@@ -176,14 +176,12 @@ Covered Distance (m) and Duration (sec.)
 
 This information we need to properly establish our database for this project.
 
-### 2.1 Creating database and importing CSV files.
-
-Establish your first database using MYSQL Workbench, which we installed already. Use this link for help → [https://blog.devart.com/creating-a-new-database-in-mysql-tutorial-with-examples.html](https://blog.devart.com/creating-a-new-database-in-mysql-tutorial-with-examples.html)
+2. Establish your first database using MYSQL Workbench, which we installed already. Use this link for help → [https://blog.devart.com/creating-a-new-database-in-mysql-tutorial-with-examples.html](https://blog.devart.com/creating-a-new-database-in-mysql-tutorial-with-examples.html)
 
 I called my database jouney_db. In workbench’s main window, I write the following query:
 ```sh
 
-use journey_db;
+use journey_db; // Remember to use (activate) your database to create tables.
 
 CREATE TABLE may
 (
@@ -227,11 +225,14 @@ y VARCHAR(255)
 );
 
 ```
+## 3. Adding and validating data
+
 Now we are ready to load data from CSV file into our database. We will use MYSQL own method called LOAD DATA INFILE.
 We are going to pass NULL values also.
 
 After you created all necessary tables, do the following:
-**Copy or move CSV files into your MySQL Uploads folder. Example path you can see in the query below | your folder structure may be different.**
+**Copy or move CSV files into your MySQL Uploads folder. Example path you can see in the query below | Your folder structure may be different.**
+
 ```sh
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/may.csv' INTO TABLE station_information
 FIELDS TERMINATED BY ','
@@ -258,33 +259,37 @@ Now it’s the time to move into REACT and set up code itself.
 
 ### Installation REACT Front- and Back-end
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+I assume you are familiar with REACT and Git. That is why this section’s guide is simple. 
+
+1. Clone the repo
    ```sh
    git clone https://github.com/github_username/repo_name.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+3. Create .env file into **SERVER** folder and add following with your information:
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   MYSQL_HOST = "host-ip"
+   MYSQL_USER = "mysql-user-name"
+   MYSQL_PASSWORD = "mysql-user-password"
+   MYSQL_DATABASE = "mysql-database"
+   ORIGIN = "localhost-http-with-port"
    ```
+4. Start MYSQL server through Task Manager services (on Windows)
+
+5. Test the app
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- USAGE EXAMPLES 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
--->
+
 
 <!-- LICENSE 
 ## License
