@@ -25,19 +25,20 @@ TABLE OF CONTENTS
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
           <ul>
-            <li><a href="#prerequisites">Prerequisites</a></li>
             <li><a href="#setting-up-database">Setting Up Database</a></li>
-          </ul></li>
+          </ul>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li>
       <ul>
         <li><a href="#usage">Usage</a></li>
-        <li><a href="#journeys">Journeys</a></li>
-        <li><a href="#stations">Stations</a></li>
+        <ul>
+          <li><a href="#journeys">Journeys</a></li>
+          <li><a href="#stations">Stations</a></li>
+        </ul>
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
